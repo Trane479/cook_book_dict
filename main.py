@@ -30,8 +30,8 @@ def txt_do_dict():
 def get_shop_list(dishes, person):
     cook_book_dict = txt_do_dict()
     ingredients_to_buy = {}
-    for dish in cook_book_dict:
-        if dish in dishes:
+    for dish in dishes:
+        if dish in cook_book_dict:
             for ingredient in cook_book_dict[dish]:
                 # print(ingredient['ingredient name'])
 
@@ -48,7 +48,7 @@ def get_shop_list(dishes, person):
 
 
 def main():
-    pprint(get_shop_list(['Омлет', 'Фахитос'], 2))
+    pprint(get_shop_list(['Омлет', 'Омлет'], 2))
 
 
 main()
