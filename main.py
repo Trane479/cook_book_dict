@@ -1,27 +1,29 @@
 from pprint import pprint
+from context_manager import context_time
 
 
 def txt_do_dict():
-    with open('cook_book.txt') as cook_book:
+    with context_time():
+        with open('cook_book.txt') as cook_book:
 
-        cook_book_dict = {}
-        while True:
-            dish = cook_book.readline().strip()
-            iteration_string = cook_book.readline()
+            cook_book_dict = {}
+            while True:
+                dish = cook_book.readline().strip()
+                iteration_string = cook_book.readline()
 
-            i = 0
-            cook_book_dict[dish] = []
-            while i < int(iteration_string):
-                ingredient_string = (cook_book.readline().strip().split('|'))
-                ingredient = ingredient_string[0]
-                quantity = ingredient_string[1]
-                measure = ingredient_string[2]
-                cook_book_dict[dish].append({'ingredient name': ingredient, 'quantity': quantity, 'measure': measure})
-                i += 1
-            cook_book.readline()
-            if i == 5:
-                break
-    return cook_book_dict
+                i = 0
+                cook_book_dict[dish] = []
+                while i < int(iteration_string):
+                    ingredient_string = (cook_book.readline().strip().split('|'))
+                    ingredient = ingredient_string[0]
+                    quantity = ingredient_string[1]
+                    measure = ingredient_string[2]
+                    cook_book_dict[dish].append({'ingredient name': ingredient, 'quantity': quantity, 'measure': measure})
+                    i += 1
+                cook_book.readline()
+                if i == 5:
+                    break
+        return cook_book_dict
 
 
 # pprint(txt_do_dict())
